@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111638">
+  <meta name="description" content="网络连接年度服务套餐与订单页面">
+  <title>VPN 年度套餐</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✦</span><span>VPN</span></a>
+    <nav>
+      <a href="#home">首页</a>
+      <a href="#plan">套餐</a>
+      <a href="#notice">使用说明</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="intro">
+        <p class="eyebrow"><span class="pulse"></span> NETWORK SERVICE</p>
+        <h1>畅享连接<br><span>从容每一天</span></h1>
+        <p class="subtitle">清晰的套餐说明 · 透明的订单流程</p>
+        <div class="feature-list">
+          <div><i>✓</i> 年度套餐，一次购买</div>
+          <div><i>✓</i> 下单后生成独立订单编号</div>
+          <div><i>✓</i> 支持支付宝自行扫码付款</div>
+        </div>
+      </div>
+
+      <section class="plan glass" id="plan">
+        <div class="plan-label">年度套餐</div>
+        <div class="price"><small>¥</small>39.90 <span>/ 年</span></div>
+        <p class="duration">有效期：365 天（自服务开通日起计算）</p>
+        <div class="plan-rule"></div>
+        <div class="plan-meta">
+          <div><b>365</b><span>天有效期</span></div>
+          <div><b>1</b><span>年度套餐</span></div>
+          <div><b>¥39.90</b><span>套餐价格</span></div>
+        </div>
+        <button class="primary alipay-button" id="buyBtn"><span class="alipay-mark">支</span> 支付宝支付 <span>→</span></button>
+        <p class="pay-hint">点击「支付宝支付」即可弹出收款二维码</p>
+        <p class="small-note">扫码后请自行核对收款方及金额；到账核实后才会确认订单。</p>
+      </section>
+    </section>
+
+    <section class="notice glass" id="notice">
+      <h2>购买与使用须知</h2>
+      <div class="notice-grid">
+        <p><strong>付款方式</strong><br>仅展示支付宝收款码，由客户自行扫码并确认付款。</p>
+        <p><strong>订单核实</strong><br>请按页面提示提交付款凭证，管理员核实到账后确认。</p>
+        <p><strong>合法使用</strong><br>用户须遵守服务所在地适用法律法规及服务条款。</p>
+      </div>
+      <details>
+        <summary>查看法律声明与完整须知</summary>
+        <ol>
+          <li>本页面展示网络连接相关年度服务套餐，价格为人民币 39.90 元，有效期 365 天，自服务实际开通之日起计算。</li>
+          <li>用户须遵守所在国家或地区适用的法律法规，不得利用服务从事违法活动、网络攻击、诈骗、侵犯他人权益或传播违法信息。</li>
+          <li>服务提供方应确保其服务及经营活动符合适用法律法规；依法需要许可或资质的，应先取得相应许可或资质。此声明不替代任何法定许可。</li>
+          <li>本网站为静态展示页面。订单编号在当前浏览器中生成；在未接入后端数据库前，订单不会自动同步到管理员或其他设备。</li>
+          <li>支付宝扫码付款由用户自行操作。生成订单、提交截图或填写付款单号均不代表已到账；以收款账户实际到账记录为准。</li>
+          <li>退款、售后及服务争议按照适用法律法规和双方有效约定处理。本声明不排除任何一方依法应承担的责任，也不限制消费者依法享有的权利。</li>
+        </ol>
+      </details>
+    </section>
+    <footer>© <span id="year"></span> 网络服务 · 请在购买前阅读使用须知</footer>
+  </main>
+
+  <dialog id="orderDialog" class="dialog">
+    <form method="dialog" class="dialog-head">
+      <div><span class="eyebrow">ORDER</span><h2>确认订单</h2></div>
+      <button class="close" aria-label="关闭">×</button>
+    </form>
+    <div class="dialog-body">
+      <div class="order-line"><span>商品</span><strong>VPN 年度套餐</strong></div>
+      <div class="order-line"><span>有效期</span><strong>365 天</strong></div>
+      <div class="order-line total"><span>应付金额</span><strong>¥39.90</strong></div>
+      <label>订单联系人 / 昵称
+        <input id="customer" maxlength="40" placeholder="填写便于核对的称呼" required>
+      </label>
+      <label>联系信息（选填）
+        <input id="contact" maxlength="80" placeholder="例如邮箱或其他联系渠道">
+      </label>
+      <button class="primary" id="createOrder" type="button">生成订单并查看付款方式</button>
+      <p class="small-note">请勿在此填写密码、身份证号或银行卡信息。</p>
+    </div>
+  </dialog>
+
+  <dialog id="payDialog" class="dialog">
+    <form method="dialog" class="dialog-head">
+      <div><span class="eyebrow">PAYMENT</span><h2>订单已生成</h2></div>
+      <button class="close" aria-label="关闭">×</button>
+    </form>
+    <div class="dialog-body">
+      <div class="order-number" id="orderNumber"></div>
+      <div class="qr-placeholder">
+        <img class="alipay-qr" src="assets/alipay-qr.jpg" alt="支付宝收款二维码">
+        <p>请使用支付宝扫码付款。付款前请核对收款方及金额为 ¥39.90。</p>
+      </div>
+      <div class="order-line total"><span>请支付</span><strong>¥39.90</strong></div>
+      <label>支付宝付款单号（付款后填写）
+        <input id="paymentRef" maxlength="80" placeholder="可选，便于管理员核对">
+      </label>
+      <label>付款备注（选填）
+        <textarea id="paymentNote" rows="2" maxlength="160" placeholder="如需说明，请填写"></textarea>
+      </label>
+      <button class="primary" id="savePayment" type="button">保存付款信息</button>
+      <p class="small-note">此静态版本仅在本机浏览器保存订单，不会自动通知管理员或验证到账。请通过你公布的客服渠道另行提交订单编号。</p>
+      <p id="savedMessage" class="saved-message" role="status"></p>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
